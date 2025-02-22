@@ -1,0 +1,226 @@
+[
+    {
+        "label": "runpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "runpy",
+        "description": "runpy",
+        "detail": "runpy",
+        "documentation": {}
+    },
+    {
+        "label": "annotations",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "site",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "site",
+        "description": "site",
+        "detail": "site",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "bin_dir",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "bin_dir = os.path.dirname(abs_file)\nbase = bin_dir[: -len(\"Scripts\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"my-app\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\\\Lib\\\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "base",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "base = bin_dir[: -len(\"Scripts\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"my-app\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\\\Lib\\\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path)",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"PATH\"]",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "os.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"my-app\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\\\Lib\\\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"VIRTUAL_ENV\"]",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "os.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"my-app\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\\\Lib\\\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"VIRTUAL_ENV_PROMPT\"]",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "os.environ[\"VIRTUAL_ENV_PROMPT\"] = \"my-app\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\\\Lib\\\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "prev_length",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "prev_length = len(sys.path)\nfor lib in \"..\\\\Lib\\\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.path[:]",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "sys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.real_prefix",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "sys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.prefix",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "sys.prefix = base",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "load_data",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def load_data():\n    return pd.read_csv(EXPENSE_FILE)\n# Save new expense\ndef save_expense(date, category, amount, description):\n    df = load_data()\n    new_data = pd.DataFrame([[date, category, amount, description]], \n                            columns=[\"Date\", \"Category\", \"Amount\", \"Description\"])\n    df = pd.concat([df, new_data], ignore_index=True)\n    df.to_csv(EXPENSE_FILE, index=False)\n# Streamlit UI",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "save_expense",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def save_expense(date, category, amount, description):\n    df = load_data()\n    new_data = pd.DataFrame([[date, category, amount, description]], \n                            columns=[\"Date\", \"Category\", \"Amount\", \"Description\"])\n    df = pd.concat([df, new_data], ignore_index=True)\n    df.to_csv(EXPENSE_FILE, index=False)\n# Streamlit UI\nst.title(\"💰 Personal Expense Tracker\")\n# Expense Input Form\nst.subheader(\"Add New Expense\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "EXPENSE_FILE",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "EXPENSE_FILE = \"expenses.csv\"\n# Ensure the file exists\nif not os.path.exists(EXPENSE_FILE):\n    df = pd.DataFrame(columns=[\"Date\", \"Category\", \"Amount\", \"Description\"])\n    df.to_csv(EXPENSE_FILE, index=False)\n# Load expense data\ndef load_data():\n    return pd.read_csv(EXPENSE_FILE)\n# Save new expense\ndef save_expense(date, category, amount, description):",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "date",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "date = st.date_input(\"Date\")\ncategory = st.selectbox(\"Category\", [\"Food\", \"Transport\", \"Shopping\", \"Bills\", \"Other\"])\namount = st.number_input(\"Amount\", min_value=0.01, format=\"%.2f\")\ndescription = st.text_area(\"Description\")\nif st.button(\"Add Expense\"):\n    save_expense(date, category, amount, description)\n    st.success(\"Expense added successfully!\")\n# Show Expenses\nst.subheader(\"📜 Expense History\")\ndf = load_data()",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "category",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "category = st.selectbox(\"Category\", [\"Food\", \"Transport\", \"Shopping\", \"Bills\", \"Other\"])\namount = st.number_input(\"Amount\", min_value=0.01, format=\"%.2f\")\ndescription = st.text_area(\"Description\")\nif st.button(\"Add Expense\"):\n    save_expense(date, category, amount, description)\n    st.success(\"Expense added successfully!\")\n# Show Expenses\nst.subheader(\"📜 Expense History\")\ndf = load_data()\nst.dataframe(df)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "amount",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "amount = st.number_input(\"Amount\", min_value=0.01, format=\"%.2f\")\ndescription = st.text_area(\"Description\")\nif st.button(\"Add Expense\"):\n    save_expense(date, category, amount, description)\n    st.success(\"Expense added successfully!\")\n# Show Expenses\nst.subheader(\"📜 Expense History\")\ndf = load_data()\nst.dataframe(df)\n# Expense Analysis",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "description",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "description = st.text_area(\"Description\")\nif st.button(\"Add Expense\"):\n    save_expense(date, category, amount, description)\n    st.success(\"Expense added successfully!\")\n# Show Expenses\nst.subheader(\"📜 Expense History\")\ndf = load_data()\nst.dataframe(df)\n# Expense Analysis\nst.subheader(\"📊 Expense Analysis\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "df = load_data()\nst.dataframe(df)\n# Expense Analysis\nst.subheader(\"📊 Expense Analysis\")\nif not df.empty:\n    df[\"Amount\"] = pd.to_numeric(df[\"Amount\"])\n    # Category-wise breakdown\n    category_summary = df.groupby(\"Category\")[\"Amount\"].sum()\n    fig, ax = plt.subplots()\n    category_summary.plot(kind=\"bar\", ax=ax, color=\"skyblue\")",
+        "detail": "main",
+        "documentation": {}
+    }
+]
