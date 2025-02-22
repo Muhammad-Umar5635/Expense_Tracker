@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 import os
 
 # File to store expenses
@@ -40,24 +39,6 @@ if st.button("Add Expense"):
 st.subheader("📜 Expense History")
 df = load_data()
 st.dataframe(df)
-
-# Expense Analysis
-st.subheader("📊 Expense Analysis")
-if not df.empty:
-    df["Amount"] = pd.to_numeric(df["Amount"])
-    
-    # Category-wise breakdown
-    category_summary = df.groupby("Category")["Amount"].sum()
-    fig, ax = plt.subplots()
-    category_summary.plot(kind="bar", ax=ax, color="skyblue")
-    ax.set_ylabel("Total Amount")
-    st.pyplot(fig)
-    
-    # Show total expenses
-    total_spent = df["Amount"].sum()
-    st.metric("Total Expenses", f"${total_spent:.2f}")
-else:
-    st.warning("No expenses recorded yet.")
 
 # Download CSV
 st.subheader("📥 Download Report")

@@ -62,15 +62,6 @@
         "documentation": {}
     },
     {
-        "label": "matplotlib.pyplot",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "matplotlib.pyplot",
-        "description": "matplotlib.pyplot",
-        "detail": "matplotlib.pyplot",
-        "documentation": {}
-    },
-    {
         "label": "bin_dir",
         "kind": 5,
         "importPath": ".venv.Scripts.activate_this",
@@ -201,7 +192,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "amount = st.number_input(\"Amount\", min_value=0.01, format=\"%.2f\")\ndescription = st.text_area(\"Description\")\nif st.button(\"Add Expense\"):\n    save_expense(date, category, amount, description)\n    st.success(\"Expense added successfully!\")\n# Show Expenses\nst.subheader(\"📜 Expense History\")\ndf = load_data()\nst.dataframe(df)\n# Expense Analysis",
+        "peekOfCode": "amount = st.number_input(\"Amount\", min_value=0.01, format=\"%.2f\")\ndescription = st.text_area(\"Description\")\nif st.button(\"Add Expense\"):\n    save_expense(date, category, amount, description)\n    st.success(\"Expense added successfully!\")\n# Show Expenses\nst.subheader(\"📜 Expense History\")\ndf = load_data()\nst.dataframe(df)\n# Download CSV",
         "detail": "main",
         "documentation": {}
     },
@@ -210,7 +201,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "description = st.text_area(\"Description\")\nif st.button(\"Add Expense\"):\n    save_expense(date, category, amount, description)\n    st.success(\"Expense added successfully!\")\n# Show Expenses\nst.subheader(\"📜 Expense History\")\ndf = load_data()\nst.dataframe(df)\n# Expense Analysis\nst.subheader(\"📊 Expense Analysis\")",
+        "peekOfCode": "description = st.text_area(\"Description\")\nif st.button(\"Add Expense\"):\n    save_expense(date, category, amount, description)\n    st.success(\"Expense added successfully!\")\n# Show Expenses\nst.subheader(\"📜 Expense History\")\ndf = load_data()\nst.dataframe(df)\n# Download CSV\nst.subheader(\"📥 Download Report\")",
         "detail": "main",
         "documentation": {}
     },
@@ -219,7 +210,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "df = load_data()\nst.dataframe(df)\n# Expense Analysis\nst.subheader(\"📊 Expense Analysis\")\nif not df.empty:\n    df[\"Amount\"] = pd.to_numeric(df[\"Amount\"])\n    # Category-wise breakdown\n    category_summary = df.groupby(\"Category\")[\"Amount\"].sum()\n    fig, ax = plt.subplots()\n    category_summary.plot(kind=\"bar\", ax=ax, color=\"skyblue\")",
+        "peekOfCode": "df = load_data()\nst.dataframe(df)\n# Download CSV\nst.subheader(\"📥 Download Report\")\nst.download_button(\"Download CSV\", df.to_csv(index=False), \"expenses.csv\", \"text/csv\")",
         "detail": "main",
         "documentation": {}
     }
