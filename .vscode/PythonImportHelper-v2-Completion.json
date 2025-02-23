@@ -147,7 +147,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def load_data():\n    return pd.read_csv(EXPENSE_FILE)\n# Save new expense\ndef save_expense(date, category, amount, description):\n    df = load_data()\n    new_data = pd.DataFrame([[date, category, amount, description]], \n                            columns=[\"Date\", \"Category\", \"Amount\", \"Description\"])\n    df = pd.concat([df, new_data], ignore_index=True)\n    df.to_csv(EXPENSE_FILE, index=False)\n# Streamlit UI",
+        "peekOfCode": "def load_data():\n    return pd.read_csv(USER_DATA_FILE)\n# Save new expense (for specific user)\ndef save_expense(user_password, date, category, amount, description):\n    df = load_data()\n    # Add new entry\n    new_data = pd.DataFrame([[user_password, date, category, amount, description]], \n                            columns=[\"User Password\", \"Date\", \"Category\", \"Amount\", \"Description\"])\n    df = pd.concat([df, new_data], ignore_index=True)\n    # Sort by Date in Descending Order",
         "detail": "main",
         "documentation": {}
     },
@@ -156,61 +156,34 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def save_expense(date, category, amount, description):\n    df = load_data()\n    new_data = pd.DataFrame([[date, category, amount, description]], \n                            columns=[\"Date\", \"Category\", \"Amount\", \"Description\"])\n    df = pd.concat([df, new_data], ignore_index=True)\n    df.to_csv(EXPENSE_FILE, index=False)\n# Streamlit UI\nst.title(\"💰 Personal Expense Tracker\")\n# Expense Input Form\nst.subheader(\"Add New Expense\")",
+        "peekOfCode": "def save_expense(user_password, date, category, amount, description):\n    df = load_data()\n    # Add new entry\n    new_data = pd.DataFrame([[user_password, date, category, amount, description]], \n                            columns=[\"User Password\", \"Date\", \"Category\", \"Amount\", \"Description\"])\n    df = pd.concat([df, new_data], ignore_index=True)\n    # Sort by Date in Descending Order\n    df[\"Date\"] = pd.to_datetime(df[\"Date\"])\n    df = df.sort_values(by=\"Date\", ascending=False)\n    df.to_csv(USER_DATA_FILE, index=False)",
         "detail": "main",
         "documentation": {}
     },
     {
-        "label": "EXPENSE_FILE",
-        "kind": 5,
+        "label": "delete_entry",
+        "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "EXPENSE_FILE = \"expenses.csv\"\n# Ensure the file exists\nif not os.path.exists(EXPENSE_FILE):\n    df = pd.DataFrame(columns=[\"Date\", \"Category\", \"Amount\", \"Description\"])\n    df.to_csv(EXPENSE_FILE, index=False)\n# Load expense data\ndef load_data():\n    return pd.read_csv(EXPENSE_FILE)\n# Save new expense\ndef save_expense(date, category, amount, description):",
+        "peekOfCode": "def delete_entry(user_password, entry_index):\n    df = load_data()\n    # Filter only user-specific data\n    user_df = df[df[\"User Password\"] == user_password]\n    # Get row index to delete\n    if entry_index < len(user_df):\n        user_df = user_df.drop(user_df.index[entry_index])\n        # Update main dataframe\n        df = df[df[\"User Password\"] != user_password]  # Remove old user data\n        df = pd.concat([df, user_df], ignore_index=True)",
         "detail": "main",
         "documentation": {}
     },
     {
-        "label": "date",
+        "label": "USER_DATA_FILE",
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "date = st.date_input(\"Date\")\ncategory = st.selectbox(\"Category\", [\"Food\", \"Transport\", \"Shopping\", \"Bills\", \"Other\"])\namount = st.number_input(\"Amount\", min_value=0.01, format=\"%.2f\")\ndescription = st.text_area(\"Description\")\nif st.button(\"Add Expense\"):\n    save_expense(date, category, amount, description)\n    st.success(\"Expense added successfully!\")\n# Show Expenses\nst.subheader(\"📜 Expense History\")\ndf = load_data()",
+        "peekOfCode": "USER_DATA_FILE = \"user_data.csv\"\n# Ensure the file exists\nif not os.path.exists(USER_DATA_FILE):\n    df = pd.DataFrame(columns=[\"User Password\", \"Date\", \"Category\", \"Amount\", \"Description\"])\n    df.to_csv(USER_DATA_FILE, index=False)\n# Load expense data\ndef load_data():\n    return pd.read_csv(USER_DATA_FILE)\n# Save new expense (for specific user)\ndef save_expense(user_password, date, category, amount, description):",
         "detail": "main",
         "documentation": {}
     },
     {
-        "label": "category",
+        "label": "user_password",
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "category = st.selectbox(\"Category\", [\"Food\", \"Transport\", \"Shopping\", \"Bills\", \"Other\"])\namount = st.number_input(\"Amount\", min_value=0.01, format=\"%.2f\")\ndescription = st.text_area(\"Description\")\nif st.button(\"Add Expense\"):\n    save_expense(date, category, amount, description)\n    st.success(\"Expense added successfully!\")\n# Show Expenses\nst.subheader(\"📜 Expense History\")\ndf = load_data()\nst.dataframe(df)",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "amount",
-        "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "amount = st.number_input(\"Amount\", min_value=0.01, format=\"%.2f\")\ndescription = st.text_area(\"Description\")\nif st.button(\"Add Expense\"):\n    save_expense(date, category, amount, description)\n    st.success(\"Expense added successfully!\")\n# Show Expenses\nst.subheader(\"📜 Expense History\")\ndf = load_data()\nst.dataframe(df)\n# Download CSV",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "description",
-        "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "description = st.text_area(\"Description\")\nif st.button(\"Add Expense\"):\n    save_expense(date, category, amount, description)\n    st.success(\"Expense added successfully!\")\n# Show Expenses\nst.subheader(\"📜 Expense History\")\ndf = load_data()\nst.dataframe(df)\n# Download CSV\nst.subheader(\"📥 Download Report\")",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "df",
-        "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "df = load_data()\nst.dataframe(df)\n# Download CSV\nst.subheader(\"📥 Download Report\")\nst.download_button(\"Download CSV\", df.to_csv(index=False), \"expenses.csv\", \"text/csv\")",
+        "peekOfCode": "user_password = st.sidebar.text_input(\"Enter Your Unique Password:\", type=\"password\")\nif user_password:\n    st.sidebar.success(\"✅ Access Granted!\")\n    # Tabs for better navigation\n    tab1, tab2, tab3 = st.tabs([\"➕ Add Expense\", \"📜 View History\", \"📥 Download & Delete\"])\n    with tab1:\n        st.header(\"➕ Add New Expense\")\n        col1, col2 = st.columns(2)\n        with col1:\n            date = st.date_input(\"📅 Date\")",
         "detail": "main",
         "documentation": {}
     }
